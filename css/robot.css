@@ -1,0 +1,83 @@
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+#robot{
+    position: absolute;
+    left: calc(50% - 124px);
+    top:15%;
+    scale:1.1;
+    /* rotate: 30deg; */
+    transition: all 0.3s ease-in-out;
+}
+
+.shake{
+      /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 0.5s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% {  translate:1px 1px; rotate:0deg; }
+    10% { translate:-1px -2px; rotate:-1deg; }
+    20% { translate:-3px 0px; rotate:1deg; }
+    30% { translate:3px 2px; rotate:0deg; }
+    40% { translate:1px -1px; rotate:1deg; }
+    50% { translate:-1px 2px; rotate:-1deg; }
+    60% { translate:-3px 1px; rotate:0deg; }
+    70% { translate:3px 1px; rotate:-1deg; }
+    80% { translate:-1px -1px; rotate:1deg; }
+    90% { translate:1px 2px; rotate:0deg; }
+    100% {translate:1px -2px; rotate:-1deg; }
+  }
+
+  .blink{
+    /* fill: #00ffff; */
+    animation:  blink 1s step-start 0s infinite;
+    /* animation-iteration-count: infinite; */
+  }
+  @keyframes blink {
+    /* 0% { fill: #00ffff !important; } */
+    50% { fill: #ff0000 !important; }
+  }
+
+#move-left, #move-right, #move-up, #move-down {
+  font-size: 40px;
+  font-family: Verdana, sans-serif;
+  background-color: blue;
+  width: 70px;
+  height: 70px;
+  padding: 10px;
+  border-radius: 17px;
+  color: blanchedalmond;
+  text-align: center;
+  position: fixed;
+  cursor: pointer;
+}
+#move-left{
+  left: calc(50% - 140px);
+  bottom: 20px;
+}
+
+#move-right{
+  left: calc(50% + 70px);
+  bottom: 20px;
+}
+
+#move-up{
+  left: calc(50% - 35px);
+  bottom: 120px;
+}
+
+#move-down{
+  left: calc(50% - 35px);
+  bottom: 20px;
+}
+
+#oven{
+  position: absolute;
+  top: 140px;
+  left: 15%;
+  z-index: -1;
+}
