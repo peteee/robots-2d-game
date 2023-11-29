@@ -94,3 +94,51 @@ leftBtn.addEventListener("click", moveLeft);
 rightBtn.addEventListener("click", moveRight);
 upBtn.addEventListener("click", moveUp);
 downBtn.addEventListener("click", moveDown);
+
+
+/**
+ * Game update loop
+ */
+
+let robotCoordX;
+let robotCoordY;
+let object1CoordX;
+let object2CoordX;
+
+const myOven = document.getElementById("oven");
+
+setInterval(() => {
+  // console.log("update loop is running")
+  robotCoordX = myRobot.getBoundingClientRect().x;
+  robotCoordY = myRobot.getBoundingClientRect().y;
+
+  //optional: move robot coordinates to its center
+  robotCoordX += 137; // half the width of the robot
+  robotCoordY += 149; // half the height of the robot
+  
+  object1CoordX = myOven.getBoundingClientRect().x;
+  object1CoordY = myOven.getBoundingClientRect().y;
+
+  if(
+       (robotCoordX >= object1CoordX && robotCoordX <= object1CoordX + 208) 
+    && (robotCoordY >= object1CoordY && robotCoordY <= object1CoordY + 244)
+    ) {
+    console.log("Hit ðŸ’¥");
+    object1Action();
+  }  
+}, 500);
+
+const ovenSound1 = new Audio("sounds/metallic-clang-100473.mp3");
+let ovenIsMessedUp = false;
+const ovenDoor = document.getElementById("door");
+
+function object1Action() {
+  
+  if(!ovenIsMessedUp) { 
+    ovenIsMessedUp = true;
+    ovenSound1.play();
+    myOven.style.transform = "translateX(-20px) rotate(2deg) scale(0.9)";
+    ovenDoor.style.fill = "yellow";
+  }
+
+}
